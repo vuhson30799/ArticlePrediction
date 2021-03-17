@@ -11,6 +11,7 @@ dir_path = os.path.dirname(os.path.realpath(os.getcwd()))
 dir_path = os.path.join(dir_path, 'djangoProject', 'test', 'train', 'data')
 
 content_data = pickle.load(open(os.path.join(dir_path, 'X_data.pkl'), 'rb'))
+tfidf_vector.fit(content_data) # learn vocabulary and idf from training set
 trained_model = pickle.load(open(os.path.join(dir_path, 'finalized_model.sav'), 'rb'))
 
 
@@ -25,8 +26,6 @@ def predict_specific_content():
     line = ViTokenizer.tokenize(line)
     content.append(line)
 
-    tfidf_vector.fit(content_data)  # learn vocabulary and idf from training set
-
     content_data_tfidf = tfidf_vector.transform(content)
     prediction = trained_model.predict(content_data_tfidf)
     return prediction[0]
@@ -36,8 +35,6 @@ def predict_articles(articles):
     for article in articles:
         gensim.utils.simple_preprocess(article)
         ViTokenizer.tokenize(article)
-
-    tfidf_vector.fit(content_data)  # learn vocabulary and idf from training set
 
     content_data_tfidf = tfidf_vector.transform(articles)
     prediction = trained_model.predict(content_data_tfidf)
