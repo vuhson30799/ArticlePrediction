@@ -42,17 +42,17 @@ def test_train_model(classifier, content_test_tfidf, label_test):
 def train_model():
     classifier = naive_bayes.MultinomialNB()
 
-    # train_path = os.path.join(dir_path, 'train_data')
-    #
-    # content_data, label_data = get_data(train_path)
-    # pickle.dump(content_data, open(os.path.join(dir_path, 'X_data.pkl'), 'wb'))
-    # pickle.dump(label_data, open(os.path.join(dir_path, 'y_data.pkl'), 'wb'))
-    #
-    # test_path = os.path.join(dir_path, 'test_data')
-    #
-    # content_test, label_test = get_data(test_path)
-    # pickle.dump(content_test, open(os.path.join(dir_path, 'X_test.pkl'), 'wb'))
-    # pickle.dump(label_test, open(os.path.join(dir_path, 'y_test.pkl'), 'wb'))
+    train_path = os.path.join(dir_path, 'train_data')
+
+    content_data, label_data = get_data(train_path)
+    pickle.dump(content_data, open(os.path.join(dir_path, 'X_data.pkl'), 'wb'))
+    pickle.dump(label_data, open(os.path.join(dir_path, 'y_data.pkl'), 'wb'))
+
+    test_path = os.path.join(dir_path, 'test_data')
+
+    content_test, label_test = get_data(test_path)
+    pickle.dump(content_test, open(os.path.join(dir_path, 'X_test.pkl'), 'wb'))
+    pickle.dump(label_test, open(os.path.join(dir_path, 'y_test.pkl'), 'wb'))
 
     content_data = pickle.load(open(os.path.join(dir_path, 'X_data.pkl'), 'rb'))
     label_data = pickle.load(open(os.path.join(dir_path, 'y_data.pkl'), 'rb'))

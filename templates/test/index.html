@@ -3,15 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Prediction</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .my_form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .my_button {
+            margin: 20px 0 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .my_table {
+            border: black 2px solid;
+            border-collapse: collapse;
+            width: 822px;
+            height: 126px;
+            max-width: 822px;
+            max-height: 126px;
+        }
+        td, tr {
+            border: black 1px solid;
+        }
+        thead {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<form method="get" action="/check">
-    <label for="urls"></label>
-    <textarea id="urls" name="urls" cols="100" rows="8" placeholder="type some urls..."></textarea>
-    <input type="submit" value="Submit"/>
-</form>
+<h1>KIỂM TRA CUỐI KÌ</h1>
+<h3>LẬP TRÌNH MẠNG NÂNG CAO</h3>
+<div class="my_form">
+    <form method="get" action="/check">
+        <div class="inline-group">
+            <label for="urls"></label>
+            <textarea id="urls" name="urls" cols="100" rows="8" placeholder="type some urls..."></textarea>
+        </div>
+        <div class="my_button">
+            <input type="submit" value="Predict"/>
+        </div>
+    </form>
 {% if result_list %}
-    <table style="border: black 1px solid; margin-top: 20px;">
+    <table class="my_table">
         <thead>
         <tr>
             <td>URL</td>
@@ -28,6 +69,7 @@
         </tbody>
     </table>
 {% endif %}
+</div>
 
 </body>
 </html>
